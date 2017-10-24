@@ -1,14 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { AppContainer } from 'react-hot-loader';
 
-import Root from './components/Root';
+import configureStore from './configureStore';
+import Root from './containers/Root';
 
-const render = (Component) => {
+const render = Component => {
   ReactDOM.render(
     <AppContainer>
-      <Component />
+      <Provider store={configureStore()}>
+        <Component />
+      </Provider>
     </AppContainer>,
     document.getElementById('root'),
   );
@@ -17,5 +21,7 @@ const render = (Component) => {
 render(Root);
 
 if (module.hot) {
-  module.hot.accept('./components/Root', () => { render(Root); });
+  module.hot.accept('./containers/Root', () => {
+    render(Root);
+  });
 }

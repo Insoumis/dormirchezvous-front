@@ -48,6 +48,9 @@ module.exports = {
       },
     ],
   },
+  devServer: {
+    overlay: true
+  },
   plugins: [
     new HtmlWebpackPlugin({
       inject: true,
@@ -60,5 +63,6 @@ module.exports = {
       },
     }),
     new webpack.NamedModulesPlugin(),
+    new webpack.optimize.ModuleConcatenationPlugin()
   ],
 };

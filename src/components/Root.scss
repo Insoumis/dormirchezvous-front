@@ -23,15 +23,31 @@
   -webkit-font-smoothing: antialiased;
 }
 
-:focus {outline: 0;}
+body {
+  // System fonts
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+}
+
+:focus {
+  outline: 0;
+}
 
 h1,
 h2,
 h3,
-p {margin: 0;}
+p {
+  margin: 0;
+}
 
 a {
   text-decoration: none;
 
-  &:hover {text-decoration: underline;}
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.content {
+  padding: 16px;
 }

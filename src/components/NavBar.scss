@@ -1,0 +1,35 @@
+.NavBar {
+  display: flex;
+  justify-content: center;
+  min-height: 56px;
+  padding-left: 16px;
+  padding-right: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: darkblue;
+  color: white;
+
+  h1,
+  a {
+    font-size: 1rem;
+  }
+  a,
+  a:visited {
+    color: white;
+  }
+
+  button {
+    background: none;
+    border: none;
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+
+    & > * {
+      margin-left: 10px;
+    }
+  }
+}

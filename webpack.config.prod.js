@@ -36,12 +36,7 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               plugins: [autoprefixer({
-                browsers: [
-                  '>1%',
-                  'last 4 versions',
-                  'Firefox ESR',
-                  'not ie < 9', // React doesn't support IE8 anyway
-                ],
+                browsers: ['last 3 versions', 'Firefox ESR'],
               })],
             },
           }, 'sass-loader'],

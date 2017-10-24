@@ -1,0 +1,17 @@
+.Profile {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .warning {
+    background-color: yellow;
+  }
+
+  .success {
+    background-color: lightgreen;
+  }
+}
