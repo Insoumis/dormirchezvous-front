@@ -5,4 +5,4 @@ ssh-add /tmp/deploy_rsa
 
 npm run build
 
-rsync -e ssh -avz --delete-after $TRAVIS_BUILD_DIR/dist insoumis@163.172.60.184:/home/insoumis/sites/dormirchezvous/dev/front
+rsync -e ssh -avz --delete-after $TRAVIS_BUILD_DIR/dist dormirchezvous@163.172.60.184:/home/insoumis/sites/dormirchezvous/dev/front
