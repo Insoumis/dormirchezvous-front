@@ -1,4 +1,4 @@
-openssl aes-256-cbc -K $encrypted_742418814ff4_key -iv $encrypted_742418814ff4_iv -in .travis/deploy_rsa.enc -out /tmp/deploy_rsa -d
+openssl aes-256-cbc -K $encrypted_72801a6f95a5_key -iv $encrypted_72801a6f95a5_iv-in .travis/deploy.enc -out /tmp/deploy_rsa -d
 eval "$(ssh-agent -s)"
 chmod 600 /tmp/deploy_rsa
 ssh-add /tmp/deploy_rsa
