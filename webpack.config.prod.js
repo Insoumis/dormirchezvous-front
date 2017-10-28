@@ -25,35 +25,46 @@ module.exports = {
         exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: [{
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              localIdentName: '[name]__[local]--[hash:base64:5]',
-              importLoaders: 2,
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                localIdentName: '[name]__[local]--[hash:base64:5]',
+                importLoaders: 2,
+              },
             },
-          }, {
-            loader: 'postcss-loader',
-            options: {
-              plugins: [autoprefixer({
-                browsers: ['last 3 versions', 'Firefox ESR'],
-              })],
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: [
+                  autoprefixer({
+                    browsers: ['last 3 versions', 'Firefox ESR'],
+                  }),
+                ],
+              },
             },
-          }, 'sass-loader'],
+            'sass-loader',
+          ],
         }),
-      }, {
+      },
+      {
         test: /\.s?css$/,
         include: /node_modules/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: [{
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1,
+              },
             },
-          }, 'sass-loader'],
+            'sass-loader',
+          ],
         }),
-      }, {
+      },
+      {
         test: /\.(jpe?g|gif|png|svg|eot|woff|ttf)$/i,
         loader: 'url-loader',
         options: {

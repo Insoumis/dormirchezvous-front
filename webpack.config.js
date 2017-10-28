@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const config = require('./config');
 
 module.exports = {
-  devtool: 'cheap-module-source-map',
+  devtool: 'cheap-module-eval-source-map',
   entry: ['react-hot-loader/patch', './src/index'],
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -21,24 +21,34 @@ module.exports = {
       {
         test: /\.scss$/,
         exclude: /node_modules/,
-        use: ['style-loader', {
-          loader: 'css-loader',
-          options: {
-            modules: true,
-            localIdentName: '[name]__[local]--[hash:base64:5]',
-            importLoaders: 1,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              localIdentName: '[name]__[local]--[hash:base64:5]',
+              importLoaders: 1,
+            },
           },
-        }, 'sass-loader'],
-      }, {
+          'sass-loader',
+        ],
+      },
+      {
         test: /\.s?css$/,
         include: /node_modules/,
-        use: ['style-loader', {
-          loader: 'css-loader',
-          options: {
-            importLoaders: 1,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+            },
           },
-        }, 'sass-loader'],
-      }, {
+          'sass-loader',
+        ],
+      },
+      {
         test: /\.(jpe?g|gif|png|svg|eot|woff|ttf)$/i,
         loader: 'url-loader',
         options: {
@@ -49,7 +59,7 @@ module.exports = {
     ],
   },
   devServer: {
-    overlay: true
+    overlay: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -63,6 +73,6 @@ module.exports = {
       },
     }),
     new webpack.NamedModulesPlugin(),
-    new webpack.optimize.ModuleConcatenationPlugin()
+    new webpack.optimize.ModuleConcatenationPlugin(),
   ],
 };
