@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Advert from './Advert';
+import MyAdvert from '../containers/MyAdvert';
 import Profile from '../containers/Profile';
 
 import style from './Home.scss';
@@ -8,8 +9,11 @@ import style from './Home.scss';
 const Home = () => (
   <div className={style.Home}>
     <section>
-      <h1>Je propose un hébergement</h1>
-      <p>TODO</p>
+      <h1>Évènement à venir : conférence du 26 Novembre</h1>
+      <p>Ça va être trop bien vous allez voir.</p>
+    </section>
+    <section>
+      <MyAdvert />
     </section>
     <section>
       <h1>Je cherche un hébergement</h1>

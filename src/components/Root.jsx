@@ -12,9 +12,8 @@ import PropTypes from 'prop-types';
 
 import 'normalize.css';
 import style from './Root.scss';
-import AdvertCreation from './AdvertCreation';
-import Home from './Home';
 import NavBar from './NavBar';
+import Home from '../containers/Home';
 import Reception from '../containers/Reception';
 
 import logOutIcon from '../assets/log-out.svg';
@@ -53,17 +52,7 @@ export default class Root extends Component {
           </Helmet>
           {this.renderNavBar()}
           <div className={style.content}>
-            {loggedIn ? (
-              <Switch>
-                <Route exact path="/" component={Home} />
-                <Route path="/create" component={AdvertCreation} />
-              </Switch>
-            ) : (
-              <Switch>
-                <Route exact path="/" component={Reception} />
-                <Redirect to="/" />
-              </Switch>
-            )}
+            {loggedIn ? <Home /> : <Reception />}
           </div>
         </div>
       </Router>

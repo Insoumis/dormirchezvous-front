@@ -31,9 +31,27 @@ const profile = (state = { name: '', contactInfo: '' }, action) => {
   }
 };
 
+const advert = (
+  state = { title: '', availableSpots: 1, description: '' },
+  action,
+) => {
+  switch (action.type) {
+    case 'UPDATE_ADVERT':
+      return action.payload;
+    case 'DELETE_ADVERT':
+      return {
+        title: '',
+        description: '',
+      };
+    default:
+      return state;
+  }
+};
+
 const app = combineReducers({
   loggedIn,
   profile,
+  advert,
 });
 
 export default app;

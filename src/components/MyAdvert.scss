@@ -1,0 +1,9 @@
+.MyAdvert {
+  .warning {
+    background-color: yellow;
+  }
+  label {
+    display: flex;
+    flex-direction: column;
+  }
+}

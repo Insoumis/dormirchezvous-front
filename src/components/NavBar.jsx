@@ -16,7 +16,11 @@ const NavBar = ({ children }) => (
 );
 
 NavBar.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
+};
+
+NavBar.defaultProps = {
+  children: null,
 };
 
 export default NavBar;

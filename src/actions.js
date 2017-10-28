@@ -31,3 +31,50 @@ export const updateProfile = ({ name, contactInfo }) => dispatch => {
 export const logOut = () => ({
   type: 'LOG_OUT',
 });
+
+export const createAdvert = ({
+  title,
+  description,
+  availableSpots,
+}) => dispatch => {
+  // TODO(buzugu): actually create advert
+  setTimeout(() => {
+    dispatch({
+      type: 'UPDATE_ADVERT',
+      payload: {
+        title,
+        description,
+        availableSpots,
+        spotsLeft: availableSpots,
+      },
+    });
+  }, 300);
+};
+
+export const updateAdvert = ({
+  title,
+  description,
+  availableSpots,
+}) => dispatch => {
+  // TODO(buzugu): actually update advert
+  setTimeout(() => {
+    dispatch({
+      type: 'UPDATE_ADVERT',
+      payload: {
+        title,
+        description,
+        availableSpots,
+        spotsLeft: availableSpots,
+      },
+    });
+  }, 300);
+};
+
+export const deleteAdvert = () => dispatch => {
+  // TODO(buzugu): actually delete advert
+  setTimeout(() => {
+    dispatch({
+      type: 'DELETE_ADVERT',
+    });
+  }, 300);
+};
