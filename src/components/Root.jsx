@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect,
-  Switch,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 import PropTypes from 'prop-types';
