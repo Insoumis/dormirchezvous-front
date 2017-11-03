@@ -1,8 +1,17 @@
+export const types = {
+  LOG_IN: 'LOG_IN',
+  LOG_OUT: 'LOG_OUT',
+  UPDATE_PROFILE: 'UPDATE_PROFILE',
+  UPDATE_ADVERT: 'UPDATE_ADVERT',
+  DELETE_ADVERT: 'DELETE_ADVERT',
+  APPLY_FOR_ADVERT: 'APPLY_FOR_ADVERT',
+};
+
 export const logIn = () => dispatch => {
   // TODO(buzugu): actually log in
   setTimeout(() => {
     dispatch({
-      type: 'LOG_IN',
+      type: types.LOG_IN,
       payload: {
         name: 'LoremWoman',
         contactInfo: 'lorem@ipsum.com',
@@ -11,25 +20,23 @@ export const logIn = () => dispatch => {
   });
 };
 
-export const updateProfile = ({ name, contactInfo }) => dispatch => {
-  // TODO(buzugu): actually update profile
-  dispatch({
-    type: 'UPDATING_PROFILE',
+export const updateProfile = ({ name, contactInfo }) => dispatch =>
+  new Promise(resolve => {
+    // TODO(buzugu): actually update profile
+    setTimeout(() => {
+      dispatch({
+        type: types.UPDATE_PROFILE,
+        payload: {
+          name,
+          contactInfo,
+        },
+      });
+      resolve();
+    }, 1000);
   });
 
-  setTimeout(() => {
-    dispatch({
-      type: 'UPDATE_PROFILE',
-      payload: {
-        name,
-        contactInfo,
-      },
-    });
-  }, 300);
-};
-
 export const logOut = () => ({
-  type: 'LOG_OUT',
+  type: types.LOG_OUT,
 });
 
 export const createAdvert = ({
@@ -40,7 +47,7 @@ export const createAdvert = ({
   // TODO(buzugu): actually create advert
   setTimeout(() => {
     dispatch({
-      type: 'UPDATE_ADVERT',
+      type: types.UPDATE_ADVERT,
       payload: {
         title,
         description,
@@ -59,7 +66,7 @@ export const updateAdvert = ({
   // TODO(buzugu): actually update advert
   setTimeout(() => {
     dispatch({
-      type: 'UPDATE_ADVERT',
+      type: types.UPDATE_ADVERT,
       payload: {
         title,
         description,
@@ -74,7 +81,20 @@ export const deleteAdvert = () => dispatch => {
   // TODO(buzugu): actually delete advert
   setTimeout(() => {
     dispatch({
-      type: 'DELETE_ADVERT',
+      type: types.DELETE_ADVERT,
     });
   }, 300);
 };
+
+export const applyForAdvert = id => dispatch =>
+  new Promise(resolve => {
+    // TODO(buzugu): actually apply
+    setTimeout(() => {
+      // TODO(buzugu): write a reducer to handle this
+      dispatch({
+        type: types.APPLY_FOR_ADVERT,
+        payload: { id },
+      });
+      resolve();
+    }, 1000);
+  });

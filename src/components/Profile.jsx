@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Formik, Field } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import PropTypes from 'prop-types';
 
 import style from './Profile.scss';
@@ -7,30 +7,31 @@ import style from './Profile.scss';
 export default class Profile extends Component {
   static propTypes = {
     update: PropTypes.func.isRequired,
-    updating: PropTypes.bool,
-    initialName: PropTypes.string.isRequired,
-    initialContactInfo: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    contactInfo: PropTypes.string.isRequired,
   };
 
-  static defaultProps = {
-    updating: false,
+  onSubmit = (values, actions) => {
+    if (
+      values.name === this.props.name &&
+      values.contactInfo === this.props.contactInfo
+    ) {
+      actions.setSubmitting(false);
+    }
+
+    this.props.update(values).then(() => {
+      actions.setSubmitting(false);
+    });
   };
 
-  onSubmit = values => {
-    this.props.update(values);
-  };
-  validate() {
-    return {};
-  }
-  renderForm = ({ handleSubmit }) => (
-    <form onSubmit={handleSubmit}>
+  renderForm = ({ isSubmitting }) => (
+    <Form>
       <label htmlFor="name">
         Votre nom
         <Field
           type="text"
           placeholder="Ou pseudonyme, comme vous voulez"
           name="name"
-          id="name"
         />
       </label>
 
@@ -44,15 +45,15 @@ export default class Profile extends Component {
         />
       </label>
 
-      <button type="submit" disabled={this.props.updating}>
+      <button type="submit" disabled={isSubmitting}>
         Mettre à jour
       </button>
-    </form>
+    </Form>
   );
 
   render() {
-    const { initialName, initialContactInfo } = this.props;
-    const incomplete = !(initialName && initialContactInfo);
+    const { name, contactInfo } = this.props;
+    const incomplete = !(name && contactInfo);
 
     return (
       <div className={style.Profile}>
@@ -68,8 +69,7 @@ export default class Profile extends Component {
           lesquels vous postulez.
         </div>
         <Formik
-          initialValues={{ name: initialName, contactInfo: initialContactInfo }}
-          validate={this.validate}
+          initialValues={{ name, contactInfo }}
           onSubmit={this.onSubmit}
           render={this.renderForm}
         />

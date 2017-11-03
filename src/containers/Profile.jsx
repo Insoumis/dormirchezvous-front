@@ -8,14 +8,10 @@ import View from '../components/Profile';
 const Profile = props => <View {...props} />;
 
 export default connect(
-  ({ profile }) => ({
-    initialName: profile.name,
-    initialContactInfo: profile.contactInfo,
-    updating: profile.updating,
-  }),
+  ({ profile }) => profile,
   dispatch => ({
     update(values) {
-      dispatch(updateProfile(values));
+      return dispatch(updateProfile(values));
     },
   }),
 )(Profile);

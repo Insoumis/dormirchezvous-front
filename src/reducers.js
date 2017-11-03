@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux';
+import { types } from './actions';
 
 const loggedIn = (state = false, action) => {
   switch (action.type) {
-    case 'LOG_IN':
+    case types.LOG_IN:
       return true;
-    case 'LOG_OUT':
+    case types.LOG_OUT:
       return false;
     default:
       return state;
@@ -13,15 +14,10 @@ const loggedIn = (state = false, action) => {
 
 const profile = (state = { name: '', contactInfo: '' }, action) => {
   switch (action.type) {
-    case 'LOG_IN':
-    case 'UPDATE_PROFILE':
+    case types.LOG_IN:
+    case types.UPDATE_PROFILE:
       return action.payload;
-    case 'UPDATING_PROFILE':
-      return {
-        ...state,
-        updating: true,
-      };
-    case 'LOG_OUT':
+    case types.LOG_OUT:
       return {
         name: '',
         contactInfo: '',
@@ -31,14 +27,14 @@ const profile = (state = { name: '', contactInfo: '' }, action) => {
   }
 };
 
-const advert = (
+const myAdvert = (
   state = { title: '', availableSpots: 1, description: '' },
   action,
 ) => {
   switch (action.type) {
-    case 'UPDATE_ADVERT':
+    case types.UPDATE_ADVERT:
       return action.payload;
-    case 'DELETE_ADVERT':
+    case types.DELETE_ADVERT:
       return {
         title: '',
         description: '',
@@ -48,10 +44,61 @@ const advert = (
   }
 };
 
+// TODO(buzugu): remove temp data
+const adverts = (
+  state = [
+    {
+      id: 0,
+      title: 'Lorem',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, praesentium! Sequi quod eligendi dolore ipsam ullam ut perspiciatis optio veritatis eveniet autem blanditiis ex saepe, esse, quo maiores, est laboriosam.',
+    },
+    {
+      id: 1,
+      title: 'Ipsum',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, praesentium! Sequi quod eligendi dolore ipsam ullam ut perspiciatis optio veritatis eveniet autem blanditiis ex saepe, esse, quo maiores, est laboriosam.',
+    },
+    {
+      id: 2,
+      title: 'Dolor',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, praesentium! Sequi quod eligendi dolore ipsam ullam ut perspiciatis optio veritatis eveniet autem blanditiis ex saepe, esse, quo maiores, est laboriosam.',
+    },
+  ],
+  action,
+) => {
+  switch (action.type) {
+    default:
+      return state;
+  }
+};
+
+// TODO(buzugu): remove temp data
+const subscriptions = (
+  state = [
+    {
+      id: 4,
+      title: 'Sit',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, praesentium! Sequi quod eligendi dolore ipsam ullam ut perspiciatis optio veritatis eveniet autem blanditiis ex saepe, esse, quo maiores, est laboriosam.',
+      message: 'Je peux lorem chez toi stp ?',
+    },
+  ],
+  action,
+) => {
+  switch (action.type) {
+    default:
+      return state;
+  }
+};
+
 const app = combineReducers({
   loggedIn,
   profile,
-  advert,
+  myAdvert,
+  adverts,
+  subscriptions,
 });
 
 export default app;

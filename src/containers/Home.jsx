@@ -8,9 +8,9 @@ import View from '../components/Home';
 const Home = props => <View {...props} />;
 
 export default connect(
-  ({ loggedIn, advert }) => ({
-    loggedIn,
-    advert,
+  ({ subscriptions, adverts }) => ({
+    adverts,
+    subscriptions,
   }),
   dispatch => ({
     logOut() {

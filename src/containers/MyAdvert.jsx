@@ -8,7 +8,7 @@ import View from '../components/MyAdvert';
 const MyAdvert = props => <View {...props} />;
 
 export default connect(
-  ({ advert }) => advert,
+  ({ myAdvert }) => myAdvert,
   dispatch => ({
     createAdvert(advert) {
       dispatch(createAdvert(advert));
