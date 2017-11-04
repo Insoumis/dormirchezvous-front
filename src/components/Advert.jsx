@@ -22,7 +22,10 @@ export default class Advert extends Component {
     if (
       values.message ||
       // eslint-disable-next-line no-alert
-      window.confirm("Vous n'avez pas rédigé de message pour l'hébergeur. Êtes-vous sûr de vouloir envoyer votre demande ?")
+      window.confirm(
+        "Vous n'avez pas rédigé de message pour l'hébergeur. " +
+          'Êtes-vous sûr de vouloir envoyer votre demande ?',
+      )
     ) {
       this.props.applyForAdvert(this.props.id).then(() => {
         actions.resetForm();

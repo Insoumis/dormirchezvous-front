@@ -5,7 +5,7 @@
     "start": "webpack-dev-server --hot --history-api-fallback",
     "format": "prettier --write src/{*.{js,jsx,scss},**/*.{js,jsx,scss}} --trailing-comma all --single-quote",
     "prelint": "npm run format",
-    "lint": "eslint src --ext .js --ext .jsx --fix",
+    "lint": "eslint src --ext .js --ext .jsx",
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production webpack -p --config webpack.config.prod.js",
     "precommit": "npm run lint"
@@ -98,6 +98,7 @@
       "class-methods-use-this": "off",
       "arrow-parens": "off",
       "object-curly-newline": "off",
+      "function-paren-newline": "off",
       "jsx-a11y/anchor-is-valid": [
         "error",
         {
