@@ -12,13 +12,6 @@ export default class Profile extends Component {
   };
 
   onSubmit = (values, actions) => {
-    if (
-      values.name === this.props.name &&
-      values.contactInfo === this.props.contactInfo
-    ) {
-      actions.setSubmitting(false);
-    }
-
     this.props.update(values).then(() => {
       actions.setSubmitting(false);
     });
@@ -27,7 +20,7 @@ export default class Profile extends Component {
   renderForm = ({ isSubmitting }) => (
     <Form>
       <label htmlFor="name">
-        Votre nom
+        <span>Nom</span>
         <Field
           type="text"
           placeholder="Ou pseudonyme, comme vous voulez"
@@ -36,7 +29,7 @@ export default class Profile extends Component {
       </label>
 
       <label htmlFor="contactInfo">
-        Informations de contact
+        <span>Informations de contact</span>
         <Field
           type="text"
           placeholder="E-mail, numéro de téléphone…"
@@ -45,7 +38,7 @@ export default class Profile extends Component {
         />
       </label>
 
-      <button type="submit" disabled={isSubmitting}>
+      <button type="submit" disabled={isSubmitting} className="button">
         Mettre à jour
       </button>
     </Form>
@@ -57,22 +50,24 @@ export default class Profile extends Component {
 
     return (
       <div className={style.Profile}>
-        <h2>Mon Profil</h2>
-        {incomplete && (
-          <div className={style.warning}>
-            Votre profil n&#39;est pas encore complet, remplissez-le pour
-            pouvoir postuler.
-          </div>
-        )}
-        <div className={style.success}>
-          Ces informations ne seront partagées qu&#39;avec les hébergeurs chez
-          lesquels vous postulez.
-        </div>
-        <Formik
-          initialValues={{ name, contactInfo }}
-          onSubmit={this.onSubmit}
-          render={this.renderForm}
-        />
+        <h1>Mon Profil</h1>
+        <article>
+          {incomplete && (
+            <p className={style.warning}>
+              Votre profil n&#39;est pas encore complet, remplissez-le pour
+              pouvoir postuler.
+            </p>
+          )}
+          <p className={style.success}>
+            Ces informations ne seront partagées qu&#39;avec les hébergeurs chez
+            lesquels vous postulerez.
+          </p>
+          <Formik
+            initialValues={{ name, contactInfo }}
+            onSubmit={this.onSubmit}
+            render={this.renderForm}
+          />
+        </article>
       </div>
     );
   }

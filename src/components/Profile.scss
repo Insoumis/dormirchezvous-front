@@ -1,17 +1,43 @@
+@import 'styles/globals';
+
 .Profile {
+  composes: card from './styles/card.scss';
+
   display: flex;
   flex-direction: column;
 
+  h1 {
+    background: $color-red;
+    border-bottom-color: $color-darkred;
+  }
   label {
     display: flex;
     flex-direction: column;
-  }
+    margin-top: 15px;
+    font-weight: 600;
 
-  .warning {
-    background-color: yellow;
+    span {
+      margin-bottom: 5px;
+    }
   }
+  input {
+    border: solid 1px lightgrey;
+    border-radius: 2px;
+    padding: 10px;
+    transition: border-color 0.1s;
+  }
+  input:focus {
+    border-color: $color-blue;
+  }
+  button[type='submit'] {
+    margin-top: 20px;
+    float: right;
+  }
+}
 
-  .success {
-    background-color: lightgreen;
-  }
+.warning {
+  composes: warning from './styles/info-box.scss';
+}
+.success {
+  composes: success from './styles/info-box.scss';
 }

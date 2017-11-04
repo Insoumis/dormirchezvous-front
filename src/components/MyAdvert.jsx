@@ -95,31 +95,33 @@ class MyAdvert extends Component {
     const { title, description, spotsLeft, availableSpots } = this.props;
     return this.state.editing ? (
       <div className={style.MyAdvert}>
-        <h1>
-          {title ? 'Mettre mon annonce à jour' : 'Je propose un hébergement'}
-        </h1>
-        <Formik
-          initialValues={{
-            title,
-            availableSpots,
-            description,
-          }}
-          isInitialValid={title.length > 0}
-          onSubmit={this.submitAdvert}
-          validate={this.validateAdvert}
-          render={this.renderForm}
-        />
+        <h1>{title ? 'Mon annonce' : 'Je propose un hébergement'}</h1>
+        <article>
+          <Formik
+            initialValues={{
+              title,
+              availableSpots,
+              description,
+            }}
+            isInitialValid={title.length > 0}
+            onSubmit={this.submitAdvert}
+            validate={this.validateAdvert}
+            render={this.renderForm}
+          />
+        </article>
       </div>
     ) : (
       <div className={style.MyAdvert}>
         <h1>Mon annonce</h1>
-        <h2>{title}</h2>
-        <p>{description}</p>
-        <div>
-          Places : {spotsLeft}/{availableSpots}
-        </div>
-        <button onClick={this.editAdvert}>Modifier</button>
-        <button onClick={this.deleteAdvert}>Supprimer</button>
+        <article>
+          <h2>{title}</h2>
+          <p>{description}</p>
+          <div>
+            Places : {spotsLeft}/{availableSpots}
+          </div>
+          <button onClick={this.editAdvert}>Modifier</button>
+          <button onClick={this.deleteAdvert}>Supprimer</button>
+        </article>
       </div>
     );
   }

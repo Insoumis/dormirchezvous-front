@@ -1,9 +1,19 @@
+@import 'styles/globals';
+
 .MyAdvert {
-  .warning {
-    background-color: yellow;
+  composes: card from './styles/card.scss';
+
+  h1 {
+    background-color: $color-red;
+    border-bottom-color: $color-darkred;
   }
+
   label {
     display: flex;
     flex-direction: column;
   }
+}
+
+.warning {
+  composes: warning from './styles/info-box.scss';
 }

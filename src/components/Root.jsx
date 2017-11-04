@@ -2,34 +2,40 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Link,
+  NavLink,
   Route,
   Redirect,
 } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-
 import PropTypes from 'prop-types';
 
 import 'normalize.css';
-import style from './Root.scss';
-import NavBar from './NavBar';
+
+import NavBar, { Left, Right } from './NavBar';
 import Reception from '../containers/Reception';
 import Advert from '../containers/Advert';
 import MyAdvert from '../containers/MyAdvert';
 import Profile from '../containers/Profile';
 import Subscription from './Subscription';
 
+import style from './Root.scss';
+
 import logOutIcon from '../assets/log-out.svg';
 
 const Home = ({ subscriptions, adverts }) => (
   <div>
-    <section>
+    <section className={style.upcomming}>
       <h1>Évènement à venir : conférence du 26 Novembre</h1>
-      <p>Ça va être trop bien vous allez voir.</p>
+      <article>
+        <p>Ça va être trop bien vous allez voir.</p>
+        <p>
+          Cake dragée sesame snaps chupa chups. Sesame snaps dessert dessert
+          tiramisu candy canes topping pie liquorice candy canes. Chupa chups
+          lemon drops chocolate cake halvah sweet soufflé macaroon jelly oat
+          cake.
+        </p>
+      </article>
     </section>
-    <nav>
-      <Link to="/search">Je cherche un hébergement</Link>
-      <Link to="/host">Je propose un hébergement</Link>
-    </nav>
     <Route
       path="/host"
       render={() => (
@@ -42,7 +48,6 @@ const Home = ({ subscriptions, adverts }) => (
       path="/search"
       render={() => (
         <section>
-          <h1>Je cherche un hébergement</h1>
           <Profile />
           <h2>Mes postulations</h2>
           <ul>
@@ -76,16 +81,26 @@ const Root = ({ loggedIn, logOut, subscriptions, adverts }) => (
     <div>
       <Helmet>
         <title>Dodo Insoumis</title>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Montserrat:400,600|PT+Sans:400,700"
+        />
       </Helmet>
-      <NavBar>
-        {loggedIn && (
-          <button onClick={logOut}>
-            <Link to="/">
-              <img src={logOutIcon} alt="Se déconnecter" />
-            </Link>
-          </button>
-        )}
-      </NavBar>
+      {loggedIn && (
+        <NavBar>
+          <Left>
+            <NavLink to="/search">Rechercher</NavLink>
+            <NavLink to="/host">Proposer</NavLink>
+          </Left>
+          <Right>
+            <button onClick={logOut}>
+              <Link to="/">
+                <img src={logOutIcon} alt="Se déconnecter" />
+              </Link>
+            </button>
+          </Right>
+        </NavBar>
+      )}
       <div className={style.content}>
         <Route
           path="/"

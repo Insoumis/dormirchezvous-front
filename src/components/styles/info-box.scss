@@ -1,0 +1,17 @@
+.info {
+  padding: 10px;
+  border-radius: 2px;
+  font-size: 1rem;
+  border-style: solid;
+  border-width: 1px;
+}
+.warning {
+  composes: info;
+  background-color: #FFFACD;
+  border-color: darken(#FFFACD, 8.5%);
+}
+.success {
+  composes: info;
+  background-color: #EAFFEA;
+  border-color: darken(#EAFFEA, 8.5%);
+}
