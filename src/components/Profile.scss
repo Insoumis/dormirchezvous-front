@@ -10,28 +10,13 @@
     background: $color-red;
     border-bottom-color: $color-darkred;
   }
-  label {
+  form {
     display: flex;
     flex-direction: column;
-    margin-top: 15px;
-    font-weight: 600;
-
-    span {
-      margin-bottom: 5px;
-    }
-  }
-  input {
-    border: solid 1px lightgrey;
-    border-radius: 2px;
-    padding: 10px;
-    transition: border-color 0.1s;
-  }
-  input:focus {
-    border-color: $color-blue;
   }
   button[type='submit'] {
     margin-top: 20px;
-    float: right;
+    align-self: flex-end;
   }
 }
 

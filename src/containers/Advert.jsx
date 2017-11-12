@@ -1,14 +1,11 @@
-import React from 'react';
 import { connect } from 'react-redux';
 
 import { applyForAdvert } from '../actions';
-import View from '../components/Advert';
+import { Advert as View } from '../components/Advert';
 
-const Avert = props => <View {...props} />;
-
-export default connect(
+export const Advert = connect(
   () => ({}),
   dispatch => ({
     applyForAdvert: id => dispatch(applyForAdvert(id)),
   }),
-)(Avert);
+)(View);

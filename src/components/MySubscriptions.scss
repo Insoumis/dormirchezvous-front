@@ -1,0 +1,23 @@
+.MySubscriptions {
+  padding-top: 25px;
+  padding-bottom: 25px;
+
+  h1 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+    text-transform: none;
+    margin-bottom: 10px;
+  }
+
+  li {
+    margin-top: 10px;
+  }
+}
+.subscription {
+  composes: card from './styles/card.scss';
+}

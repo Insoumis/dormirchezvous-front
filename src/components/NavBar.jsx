@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 import style from './NavBar.scss';
 
-const NavBar = ({ children }) => <div className={style.NavBar}>{children}</div>;
+export const NavBar = ({ children }) => (
+  <div className={style.NavBar}>{children}</div>
+);
 NavBar.propTypes = {
   children: PropTypes.node.isRequired,
 };
@@ -21,5 +23,3 @@ export const Right = ({ children }) => (
 Right.propTypes = {
   children: PropTypes.node.isRequired,
 };
-
-export default NavBar;

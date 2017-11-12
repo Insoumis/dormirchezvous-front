@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { AppContainer } from 'react-hot-loader';
 
 import configureStore from './configureStore';
-import Root from './containers/Root';
+import { Root } from './containers/Root';
 
 const render = Component => {
   ReactDOM.render(

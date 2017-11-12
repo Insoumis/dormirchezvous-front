@@ -27,7 +27,7 @@ const profile = (state = { name: '', contactInfo: '' }, action) => {
   }
 };
 
-const myAdvert = (
+const myAdvertDetail = (
   state = { title: '', availableSpots: 1, description: '' },
   action,
 ) => {
@@ -43,6 +43,30 @@ const myAdvert = (
       return state;
   }
 };
+
+// TODO(buzugu): remove temp data
+const myAdvertApplications = (
+  state = [
+    {
+      id: 94,
+      name: 'Ms. Ipsum',
+      contactInfo: 'ipsum@lorem.com',
+      message:
+        'Gingerbread donut cupcake cake oat cake jujubes jelly beans powder fruitcake. Caramels macaroon jelly gummi bears.',
+    },
+  ],
+  action,
+) => {
+  switch (action.type) {
+    default:
+      return state;
+  }
+};
+
+const myAdvert = combineReducers({
+  detail: myAdvertDetail,
+  applications: myAdvertApplications,
+});
 
 // TODO(buzugu): remove temp data
 const adverts = (

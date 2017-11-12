@@ -56,8 +56,10 @@ h1 {
 h1,
 h2,
 h3,
-p {
+p,
+ul {
   margin: 0;
+  padding: 0;
 }
 
 p {
@@ -72,9 +74,40 @@ a {
   }
 }
 
+ul {
+  list-style-type: none;
+}
+
 button {
   background: none;
   border: none;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  font-weight: 600;
+
+  span {
+    margin-bottom: 5px;
+  }
+}
+
+input,
+textarea {
+  font-family: 'PT Sans', sans-serif;
+  border: solid 1px lightgrey;
+  border-radius: 2px;
+  padding: 10px;
+  transition: border-color 0.1s;
+
+  &:focus {
+    border-color: $color-blue;
+  }
+}
+textarea {
+  resize: none;
 }
 
 :global(.button) {
@@ -96,6 +129,20 @@ button {
     background-color: lighten($color-blue, 25%);
     border-bottom-color: lighten($color-darkblue, 25%);
   }
+
+  &:global(.red) {
+    background: $color-red;
+    border-bottom: solid 1px $color-darkred;
+
+    &:hover {
+      background-color: $color-darkred;
+    }
+
+    &:disabled {
+      background-color: lighten($color-red, 25%);
+      border-bottom-color: lighten($color-darkred, 25%);
+    }
+  }
 }
 
 .content {
@@ -104,4 +151,5 @@ button {
 
 .upcomming {
   composes: card from './styles/card.scss';
+  margin-bottom: 20px;
 }

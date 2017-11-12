@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import style from './Profile.scss';
 
-export default class Profile extends Component {
+export class Profile extends Component {
   static propTypes = {
     update: PropTypes.func.isRequired,
     name: PropTypes.string.isRequired,

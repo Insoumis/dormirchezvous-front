@@ -1,0 +1,16 @@
+.Advert {
+  composes: card from './styles/card.scss';
+  article {
+    display: flex;
+    flex-direction: column;
+  }
+
+  h2 {
+    text-transform: none;
+    margin-bottom: 10px;
+  }
+  button {
+    margin-top: 10px;
+    align-self: flex-end;
+  }
+}

@@ -7,10 +7,36 @@
     background-color: $color-red;
     border-bottom-color: $color-darkred;
   }
-
-  label {
+  h2 {
+    text-transform: none;
+    margin-bottom: 5px;
+  }
+  p {
+    margin-bottom: 5px;
+  }
+  form {
     display: flex;
     flex-direction: column;
+  }
+  button[type='submit'] {
+    margin-top: 20px;
+    align-self: flex-end;
+  }
+}
+
+.spotsLeft {
+  margin-bottom: 15px;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+
+  aside {
+    align-self: flex-end;
+  }
+  button + button {
+    margin-left: 5px;
   }
 }
 

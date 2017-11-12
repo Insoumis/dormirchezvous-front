@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Formik, Form, Field } from 'formik';
 import PropTypes from 'prop-types';
 
-export default class Advert extends Component {
+import style from './Advert.scss';
+
+export class Advert extends Component {
   static propTypes = {
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
@@ -49,19 +51,23 @@ export default class Advert extends Component {
     const { title, description } = this.props;
     const { applying } = this.state;
     return (
-      <div>
-        <h3>{title}</h3>
-        <p>{description}</p>
-        {applying ? (
-          <Formik
-            initialValues={{ message: '' }}
-            render={this.renderForm}
-            onSubmit={this.onSubmit}
-            validate={this.validate}
-          />
-        ) : (
-          <button onClick={this.onClickApply}>Postuler</button>
-        )}
+      <div className={style.Advert}>
+        <article>
+          <h2>{title}</h2>
+          <p>{description}</p>
+          {applying ? (
+            <Formik
+              initialValues={{ message: '' }}
+              render={this.renderForm}
+              onSubmit={this.onSubmit}
+              validate={this.validate}
+            />
+          ) : (
+            <button onClick={this.onClickApply} className="button">
+              Postuler
+            </button>
+          )}
+        </article>
       </div>
     );
   }

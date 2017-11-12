@@ -1,14 +1,13 @@
-import React from 'react';
-
 import { connect } from 'react-redux';
 
 import { createAdvert, updateAdvert, deleteAdvert } from '../actions';
-import View from '../components/MyAdvert';
+import { MyAdvert as View } from '../components/MyAdvert';
 
-const MyAdvert = props => <View {...props} />;
-
-export default connect(
-  ({ myAdvert }) => myAdvert,
+export const MyAdvert = connect(
+  ({ myAdvert }) => ({
+    ...myAdvert.detail,
+    applications: myAdvert.applications,
+  }),
   dispatch => ({
     createAdvert(advert) {
       dispatch(createAdvert(advert));
@@ -20,4 +19,4 @@ export default connect(
       dispatch(deleteAdvert());
     },
   }),
-)(MyAdvert);
+)(View);
