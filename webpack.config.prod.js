@@ -37,6 +37,7 @@ module.exports = {
             {
               loader: 'postcss-loader',
               options: {
+                ident: 'postcss',
                 plugins: [
                   autoprefixer({
                     browsers: ['last 3 versions', 'Firefox ESR'],
