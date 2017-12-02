@@ -148,8 +148,3 @@ textarea {
 .content {
   padding: $gutter-size;
 }
-
-.upcomming {
-  composes: card from './styles/card.scss';
-  margin-bottom: 20px;
-}

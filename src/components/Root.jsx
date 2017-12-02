@@ -1,24 +1,16 @@
 import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Link,
-  NavLink,
-  Route,
-  Redirect,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 
 import 'normalize.css';
 
-import { NavBar, Left, Right } from './NavBar';
+import { NavBar } from './NavBar';
 import { Reception } from '../containers/Reception';
 import { MyAdvert } from '../containers/MyAdvert';
 import { Search } from '../containers/Search';
 
 import style from './Root.scss';
-
-import logOutIcon from '../assets/log-out.svg';
 
 export class Root extends Component {
   determineRouteToLoad = ({ location }) => {
@@ -26,54 +18,18 @@ export class Root extends Component {
       return <Redirect to="/search" />;
     }
     if (this.props.loggedIn) {
-      return this.renderHome();
+      return (
+        <div>
+          <Route path="/host" component={MyAdvert} />
+          <Route path="/search" component={Search} />
+        </div>
+      );
     }
     if (location.pathname !== '/') {
       return <Redirect to="/" />;
     }
     return <Reception />;
   };
-
-  renderHome() {
-    return (
-      <div>
-        <section className={style.upcomming}>
-          <h1>Évènement à venir : conférence du 26 Novembre</h1>
-          <article>
-            <p>Ça va être trop bien vous allez voir.</p>
-            <p>
-              Cake dragée sesame snaps chupa chups. Sesame snaps dessert dessert
-              tiramisu candy canes topping pie liquorice candy canes. Chupa
-              chups lemon drops chocolate cake halvah sweet soufflé macaroon
-              jelly oat cake.
-            </p>
-          </article>
-        </section>
-        <Route path="/host" component={MyAdvert} />
-        <Route path="/search" component={Search} />
-      </div>
-    );
-  }
-
-  renderNavBar() {
-    return this.props.loggedIn ? (
-      <NavBar>
-        <Left>
-          <NavLink to="/search">Rechercher</NavLink>
-          <NavLink to="/host">Proposer</NavLink>
-        </Left>
-        <Right>
-          <button onClick={this.props.logOut}>
-            <Link to="/">
-              <img src={logOutIcon} alt="Se déconnecter" />
-            </Link>
-          </button>
-        </Right>
-      </NavBar>
-    ) : (
-      <NavBar />
-    );
-  }
 
   render() {
     return (
@@ -86,7 +42,7 @@ export class Root extends Component {
               href="https://fonts.googleapis.com/css?family=Montserrat:400,600|PT+Sans:400,700"
             />
           </Helmet>
-          {this.renderNavBar()}
+          <NavBar loggedIn={this.props.loggedIn} logOut={this.props.logOut} />
           <div className={style.content}>
             <Route path="/" render={this.determineRouteToLoad} />
           </div>

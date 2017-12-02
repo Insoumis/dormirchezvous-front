@@ -148,7 +148,7 @@ export class MyAdvert extends Component {
         {/* TODO(buzugu): implement */}
         <ul>
           {applications.map(application => (
-            <li>{JSON.stringify(application)}</li>
+            <li key={application.id}>{JSON.stringify(application)}</li>
           ))}
         </ul>
       </div>

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import style from './MySubscriptions.scss';
 
 export const MySubscriptions = ({ subscriptions }) => (
-  <main className={style.MySubscriptions}>
+  <div className={style.MySubscriptions}>
     <h1>Mes postulations</h1>
     <ul>
       {subscriptions.map(({ id, message, title, description }) => (
@@ -21,7 +21,7 @@ export const MySubscriptions = ({ subscriptions }) => (
         </li>
       ))}
     </ul>
-  </main>
+  </div>
 );
 
 MySubscriptions.propTypes = {
